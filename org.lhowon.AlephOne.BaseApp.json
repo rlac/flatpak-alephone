@@ -1,0 +1,88 @@
+{
+    "app-id": "org.lhowon.AlephOne.BaseApp",
+    "branch": "1.3",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "/bin/bash",
+    "finish-args": [
+        "--socket=x11",
+        "--share=network",
+        "--device=dri",
+        "--share=ipc",
+        "--socket=pulseaudio",
+        "--persist=.alephone"
+    ],
+    "build-options": {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g"
+    },
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "*.a",
+        "*.la",
+        "/share/man",
+        "/share/aclocal",
+        "/share/icons",
+        "/share/mime"
+    ],
+    "modules": [
+        {
+            "name": "boost",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz",
+                    "sha256": "da3411ea45622579d419bfda66f45cd0f8c32a181d84adfa936f5688388995cf"
+                }
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "./bootstrap.sh --prefix=/app --exec-prefix=/app --with-libraries=system,filesystem",
+                "./b2 install"
+            ]
+        },
+        {
+            "name": "glu",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.0.tar.gz",
+                    "sha256": "4387476a1933f36fec1531178ea204057bbeb04cc2d8396c9ea32720a1f7e264"
+                }
+            ]
+        },
+        {
+            "name": "zziplib",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/zziplib/files/zziplib13/0.13.68/zziplib-0.13.68.tar.gz/download",
+                    "sha256": "81628fde8f79cd0095b15f2778946ff330f477543e7578d698fc3fa21c68200e",
+                    "dest-filename": "zziplib.tar.gz"
+                }
+            ],
+            "cleanup": [
+                "/bin/*"
+            ]
+        },
+        {
+            "name": "alephone",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Aleph-One-Marathon/alephone.git",
+                    "branch": "release-20181006",
+                    "commit": "3c4f22cff1fcac40b4ac06c44bef2b5760a4a74f"
+                }
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "./autogen.sh --with-boost-libdir=/app/lib --prefix=/app",
+                "make",
+                "make install"
+            ]
+        }
+    ]
+}

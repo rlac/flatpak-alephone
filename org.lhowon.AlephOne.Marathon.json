@@ -1,0 +1,50 @@
+{
+    "app-id": "org.lhowon.AlephOne.Marathon",
+    "base": "org.lhowon.AlephOne.BaseApp",
+    "base-version": "1.3",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "launch.sh",
+    "finish-args": [
+        "--socket=x11",
+        "--share=network",
+        "--device=dri",
+        "--share=ipc",
+        "--socket=pulseaudio",
+        "--persist=.alephone"
+    ],
+    "modules": [
+        {
+            "name": "scenario",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/data-marathon",
+                "cp -r * /app/share/data-marathon/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Aleph-One-Marathon/data-marathon.git",
+                    "commit": "ae1a277ac1fdd336e13e5f1af589beed6620b6a9"
+                }
+            ]
+        },
+        {
+            "name": "launcher",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cp launch.sh /app/bin"
+            ],
+            "sources": [
+                {
+                    "type": "script",
+                    "commands": [
+                        "alephone /app/share/data-marathon"
+                    ],
+                    "dest-filename": "launch.sh"
+                }
+            ]
+        }
+    ]
+}
