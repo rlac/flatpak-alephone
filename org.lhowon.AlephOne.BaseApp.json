@@ -73,8 +73,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Aleph-One-Marathon/alephone.git",
-                    "branch": "release-20181006",
-                    "commit": "3c4f22cff1fcac40b4ac06c44bef2b5760a4a74f"
+                    "branch": "release-20190331",
+                    "commit": "5d1476f0938f2b9fe79f8e175d0a2344c53cf965"
                 }
             ],
             "buildsystem": "simple",

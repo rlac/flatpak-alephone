@@ -8,6 +8,7 @@ For now, you can build locally. Install flatpak-builder, then:
 
 ```bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install org.freedesktop.Platform//18.08
 flatpak install org.freedesktop.Sdk//18.08
 flatpak-builder --install --user builddir org.lhowon.AlephOne.BaseApp.json --force-clean
 flatpak-builder --install --user builddir org.lhowon.AlephOne.Marathon.json --force-clean
