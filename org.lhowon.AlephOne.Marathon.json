@@ -1,9 +1,9 @@
 {
     "app-id": "org.lhowon.AlephOne.Marathon",
     "base": "org.lhowon.AlephOne.BaseApp",
-    "base-version": "1.3",
+    "base-version": "1.4",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "launch.sh",
     "finish-args": [
@@ -26,7 +26,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Aleph-One-Marathon/data-marathon.git",
-                    "commit": "ae1a277ac1fdd336e13e5f1af589beed6620b6a9"
+                    "commit": "d2150945f127b61b2d18ae51ea9ee8ee41f93ed1"
                 }
             ]
         },

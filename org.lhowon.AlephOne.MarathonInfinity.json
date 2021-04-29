@@ -1,9 +1,9 @@
 {
     "app-id": "org.lhowon.AlephOne.MarathonInfinity",
     "base": "org.lhowon.AlephOne.BaseApp",
-    "base-version": "1.3",
+    "base-version": "1.4",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "launch.sh",
     "finish-args": [
@@ -26,7 +26,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Aleph-One-Marathon/data-marathon-infinity.git",
-                    "commit": "0c6f5001216e7193296ef3430e82705af603f9fb"
+                    "commit": "7642270eae24baed30c2a990efeb9ea2b5b3236f"
                 }
             ]
         },

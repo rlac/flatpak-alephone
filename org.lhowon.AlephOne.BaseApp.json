@@ -1,8 +1,8 @@
 {
     "app-id": "org.lhowon.AlephOne.BaseApp",
-    "branch": "1.3",
+    "branch": "1.4",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "/bin/bash",
     "finish-args": [
@@ -33,23 +33,24 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz",
-                    "sha256": "da3411ea45622579d419bfda66f45cd0f8c32a181d84adfa936f5688388995cf"
+                    "url": "https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2",
+                    "sha256": "953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb"
                 }
             ],
             "buildsystem": "simple",
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --exec-prefix=/app --with-libraries=system,filesystem",
-                "./b2 install"
+                "./b2 install variant=release link=shared runtime-link=shared cxxflags=\"$CXXFLAGS\" linkflags=\"$LDFLAGS\" -j $FLATPAK_BUILDER_N_JOBS"
             ]
         },
         {
             "name": "glu",
+            "config-opts": ["--disable-static"],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.0.tar.gz",
-                    "sha256": "4387476a1933f36fec1531178ea204057bbeb04cc2d8396c9ea32720a1f7e264"
+                    "url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.1.tar.xz",
+                    "sha256": "fb5a4c2dd6ba6d1c21ab7c05129b0769544e1d68e1e3b0ffecb18e73c93055bc"
                 }
             ]
         },
@@ -58,11 +59,12 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://sourceforge.net/projects/zziplib/files/zziplib13/0.13.68/zziplib-0.13.68.tar.gz/download",
-                    "sha256": "81628fde8f79cd0095b15f2778946ff330f477543e7578d698fc3fa21c68200e",
+                    "url": "https://github.com/gdraheim/zziplib/archive/v0.13.72.tar.gz",
+                    "sha256": "93ef44bf1f1ea24fc66080426a469df82fa631d13ca3b2e4abaeab89538518dc",
                     "dest-filename": "zziplib.tar.gz"
                 }
             ],
+            "buildsystem": "cmake",
             "cleanup": [
                 "/bin/*"
             ]
@@ -73,8 +75,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Aleph-One-Marathon/alephone.git",
-                    "branch": "release-20190331",
-                    "commit": "5d1476f0938f2b9fe79f8e175d0a2344c53cf965"
+                    "branch": "release-20210408",
+                    "commit": "0812dca65b50d8d825a2211775e13564522b06f8"
                 }
             ],
             "buildsystem": "simple",

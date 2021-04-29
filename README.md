@@ -4,16 +4,15 @@ This is a [Flatpak](https://flatpak.org/) build of [AlephOne](https://alephone.l
 
 ## Installation
 
-For now, you can build locally. Install flatpak-builder, then:
+For now, you can build locally. Ensure your system has Flatpak installed, then:
 
 ```bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install org.freedesktop.Platform//18.08
-flatpak install org.freedesktop.Sdk//18.08
-flatpak-builder --install --user builddir org.lhowon.AlephOne.BaseApp.json --force-clean
-flatpak-builder --install --user builddir org.lhowon.AlephOne.Marathon.json --force-clean
-flatpak-builder --install --user builddir org.lhowon.AlephOne.Marathon2.json --force-clean
-flatpak-builder --install --user builddir org.lhowon.AlephOne.MarathonInfinity.json --force-clean
+flatpak install org.flatpak.Builder org.freedesktop.Platform//20.08 org.freedesktop.Sdk//20.08
+flatpak run org.flatpak.Builder --install --user builddir org.lhowon.AlephOne.BaseApp.json --force-clean
+flatpak run org.flatpak.Builder --install --user builddir org.lhowon.AlephOne.Marathon.json --force-clean
+flatpak run org.flatpak.Builder --install --user builddir org.lhowon.AlephOne.Marathon2.json --force-clean
+flatpak run org.flatpak.Builder --install --user builddir org.lhowon.AlephOne.MarathonInfinity.json --force-clean
 ```
 
 To uninstall:
